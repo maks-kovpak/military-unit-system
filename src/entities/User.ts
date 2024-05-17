@@ -1,19 +1,10 @@
 import { INotificationsListener } from '../interfaces/INotificationListener.ts';
+import { IUser } from '../interfaces/IUser.ts';
 import { BaseNotification } from './Notification.ts';
 import { UserAccessLevel } from '../lib/enums.ts';
 import { Task } from './Task.ts';
-
 import { Subdivision } from './Subdivision.ts';
-
-export interface IUser {
-  id: number;
-  firstName: string;
-  lastName: string;
-  position: string;
-  subdivision: Subdivision;
-}
-
-type UserWithoutId = Omit<IUser, 'id'>;
+import { UserWithoutId } from '../lib/types.ts';
 
 export class User implements IUser, INotificationsListener {
   public readonly id: number;

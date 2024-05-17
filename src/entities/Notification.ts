@@ -1,9 +1,5 @@
 import { NotificationType } from '../lib/enums.ts';
-
-export interface INotification {
-  notificationType: NotificationType;
-  text: string;
-}
+import { INotification } from '../interfaces/INotification.ts';
 
 export class BaseNotification implements INotification {
   public notificationType: NotificationType;

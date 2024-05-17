@@ -3,17 +3,7 @@ import { User } from './User.ts';
 import { BaseNotification } from './Notification.ts';
 import { NotificationsManager } from './NotificationManager.ts';
 import { NotificationType } from '../lib/enums.ts';
-
-export interface ITask {
-  id: number;
-  name: string;
-  description: string;
-  assigner: User;
-  performer: User;
-  deadline: Date;
-  status: TaskStatus;
-  subtasks: Task[];
-}
+import { ITask } from '../interfaces/ITask.ts';
 
 export class Task implements ITask {
   public readonly id: number;

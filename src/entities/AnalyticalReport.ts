@@ -2,12 +2,11 @@ export class AnalyticalReport {
   public readonly data: number[];
   public readonly chartConfig: Record<string, unknown>;
 
-  constructor(data: number[]) {
+  constructor(data: number[], chartConfig: Record<string, unknown> = {}) {
     this.data = data;
     this.chartConfig = {
-      type: 'line',
       data: this.data,
-      color: '#349fef',
+      ...chartConfig,
     };
   }
 

@@ -18,12 +18,12 @@ export class Personnel {
     return new MilitaryUnitStructure({
       value: new Subdivision('Main Department'),
       children: [
-        { value: new Subdivision('Department1 '), children: [] },
+        { value: new Subdivision('Department №1'), children: [] },
         {
-          value: new Subdivision('department2'),
+          value: new Subdivision('Department №2'),
           children: [
             {
-              value: new Subdivision('department2.1'),
+              value: new Subdivision('Department №2.1'),
               children: [],
             },
           ],

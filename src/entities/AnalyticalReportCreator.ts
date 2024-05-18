@@ -1,6 +1,6 @@
 import { AnalyticalReport } from './AnalyticalReport.ts';
 
-class AnalyticalReportCreator {
+export class AnalyticalReportCreator {
   public static create(chartConfig: Record<string, unknown>) {
     return class extends AnalyticalReport {
       constructor(data: number[]) {
@@ -9,5 +9,3 @@ class AnalyticalReportCreator {
     };
   }
 }
-
-export default AnalyticalReportCreator;

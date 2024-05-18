@@ -1,16 +1,26 @@
-import { IModule } from '../interfaces/IModule.ts';
+import { Module } from './Module.ts';
 import { Filters } from '../lib/types.ts';
 import { AnalyticalReport } from '../entities/AnalyticalReport.ts';
+import { User } from '../entities/User.ts';
 
-export class Analytics implements IModule {
+export class Analytics extends Module {
+  protected _requiredAdminAccess: boolean = true;
+
   public readonly id: number;
   public filters: Filters;
   public report: AnalyticalReport;
 
-  constructor(id: number, data: number[], filters?: Filters) {
-    this.id = id;
-    this.filters = filters ?? {};
-    this.report = new AnalyticalReport(data);
+  constructor() {
+    super();
+
+    // Mock data "fetched" from server
+    this.id = 235495623;
+    this.filters = {
+      month: (value) => (value as Date).getMonth() === 5,
+      assigner: (value) => (value as User).lastName === 'Shevchenko',
+    };
+
+    this.report = new AnalyticalReport([1, 4.34, 3.3, 4.2, 111, 3.4, 47, 5]);
   }
 
   public addFilters(additionalFilters: Filters): void {
@@ -26,9 +36,5 @@ export class Analytics implements IModule {
   public applyFilters(): void {
     console.log('The filters has been successfully applied!');
     console.log(this.filters);
-  }
-
-  public display(): void {
-    console.log('Display analytics module');
   }
 }

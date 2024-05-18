@@ -1,14 +1,20 @@
-import { IModule } from '../interfaces/IModule.ts';
+import { User } from '../entities/User.ts';
+import { Module } from './Module.ts';
 
 export class Application {
-  private _modules: IModule[] = [];
+  private _modules: Module[] = [];
+  private _user: User;
 
-  public registerModule(module: IModule) {
-    this._modules.push(module);
+  constructor(user: User) {
+    this._user = user;
+  }
+
+  public registerModule(moduleClass: { new (): Module }) {
+    this._modules.push(new moduleClass());
   }
 
   public run() {
-    this._modules.forEach((module) => module.display());
+    this._modules.forEach((module) => module.displayForUser(this._user));
     console.log('Application has been started!');
   }
 }

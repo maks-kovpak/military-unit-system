@@ -1,9 +1,10 @@
-import { User } from './User.ts';
-import { Task } from './Task.ts';
-import { MilitaryUnitStructure } from './MilitaryUnitStructure.ts';
-import { Subdivision } from './Subdivision.ts';
+import { User } from '../entities/User.ts';
+import { Task } from '../entities/Task.ts';
+import { MilitaryUnitStructure } from '../entities/MilitaryUnitStructure.ts';
+import { Subdivision } from '../entities/Subdivision.ts';
+import { IModule } from '../interfaces/IModule.ts';
 
-export class Personnel {
+export class Personnel implements IModule {
   private _personnelList: User[] = [];
 
   public addNewPerson(person: User): void {
@@ -44,5 +45,9 @@ export class Personnel {
     }
 
     return tasks;
+  }
+
+  public display(): void {
+    console.log('Display analytics module');
   }
 }

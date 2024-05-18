@@ -1,7 +1,8 @@
+import { IModule } from '../interfaces/IModule.ts';
 import { Filters } from '../lib/types.ts';
-import { AnalyticalReport } from './AnalyticalReport.ts';
+import { AnalyticalReport } from '../entities/AnalyticalReport.ts';
 
-export class Analytics {
+export class Analytics implements IModule {
   public readonly id: number;
   public filters: Filters;
   public report: AnalyticalReport;
@@ -25,5 +26,9 @@ export class Analytics {
   public applyFilters(): void {
     console.log('The filters has been successfully applied!');
     console.log(this.filters);
+  }
+
+  public display(): void {
+    console.log('Display analytics module');
   }
 }

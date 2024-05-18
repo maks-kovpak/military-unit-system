@@ -40,7 +40,7 @@ export class Task implements ITask {
     this._status = value;
   }
 
-  private _notifyAboutStatusChange(oldStatus: TaskStatus, newStatus: TaskStatus) {
+  private _notifyAboutStatusChange(oldStatus: TaskStatus, newStatus: TaskStatus): void {
     this._notificationsManager.notify(
       new BaseNotification({
         notificationType: NotificationType.Email,

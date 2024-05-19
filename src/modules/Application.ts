@@ -9,8 +9,8 @@ export class Application {
     this._user = user;
   }
 
-  public registerModule(moduleClass: { new (): Module }) {
-    this._modules.push(new moduleClass());
+  public registerModule(ModuleClass: { new (): Module }) {
+    this._modules.push(new ModuleClass());
   }
 
   public run() {

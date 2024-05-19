@@ -9,12 +9,12 @@ export class Application {
     this._user = user;
   }
 
-  public registerModule(ModuleClass: { new (): Module }) {
-    this._modules.push(new ModuleClass());
+  public registerModule(ModuleClass: { new (user: User): Module }) {
+    this._modules.push(new ModuleClass(this._user));
   }
 
   public run() {
-    this._modules.forEach((module) => module.displayForUser(this._user));
+    this._modules.forEach((module) => module.displayForUser());
     console.log('Application has been started!');
   }
 }

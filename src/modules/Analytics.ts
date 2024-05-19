@@ -6,15 +6,13 @@ import { User } from '../entities/User.ts';
 export class Analytics extends Module {
   protected _requiredAdminAccess: boolean = true;
 
-  public readonly id: number;
   public filters: Filters;
   public report: AnalyticalReport;
 
-  constructor() {
-    super();
+  constructor(user: User) {
+    super(user);
 
     // Mock data "fetched" from server
-    this.id = 235495623;
     this.filters = {
       month: (value) => (value as Date).getMonth() === 5,
       assigner: (value) => (value as User).lastName === 'Shevchenko',

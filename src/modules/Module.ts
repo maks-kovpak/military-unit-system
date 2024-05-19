@@ -2,13 +2,18 @@ import { User } from '../entities/User.ts';
 
 export abstract class Module {
   protected _requiredAdminAccess: boolean = false;
+  protected _user: User;
 
-  protected _isAccessGranted(user: User): boolean {
-    return user.isAdmin();
+  constructor(user: User) {
+    this._user = user;
   }
 
-  public displayForUser(user: User): void {
-    if (this._requiredAdminAccess && !this._isAccessGranted(user)) {
+  protected _isAccessGranted(): boolean {
+    return this._user.isAdmin();
+  }
+
+  public displayForUser(): void {
+    if (this._requiredAdminAccess && !this._isAccessGranted()) {
       return;
     }
 

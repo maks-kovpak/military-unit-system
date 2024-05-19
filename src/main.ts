@@ -4,6 +4,7 @@ import { UserAccessLevel } from './lib/enums.ts';
 import { Analytics } from './modules/Analytics.ts';
 import { Application } from './modules/Application.ts';
 import { Personnel } from './modules/Personnel.ts';
+import { TasksManagement } from './modules/TasksManagement.ts';
 
 const currentUser = new User({
   id: 1033,
@@ -18,5 +19,6 @@ const app = new Application(currentUser);
 
 app.registerModule(Personnel);
 app.registerModule(Analytics);
+app.registerModule(TasksManagement);
 
 app.run();
